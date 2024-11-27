@@ -67,7 +67,7 @@ export function loggingUser(req,res){
 export function deleteUser(req,res){
     User.deleteOne({email: req.body.email}).then(()=>{
         res.json({
-            message: "Student Deleted"
+            message: "User Deleted"
         })
     })
 }
