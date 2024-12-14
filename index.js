@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 
-const mongoUrl = "mongodb+srv://admin:123@cluster0.bnvi8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const mongoUrl = "url"
 
 mongoose.connect(mongoUrl,{})
 
@@ -27,7 +27,7 @@ app.use(
 
         if(token != null){
             //descrypt
-            jwt.verify(token,"cbc-secret-key-7973",(error,decoded)=>{
+            jwt.verify(token,"secretkey",(error,decoded)=>{
                 if(!error){
                     console.log(decoded)
                     req.user = decoded
