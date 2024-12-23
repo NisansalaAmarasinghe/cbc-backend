@@ -29,7 +29,7 @@ app.use(
 
         if(token != null){
             //descrypt
-            jwt.verify(token,"secretkey",(error,decoded)=>{
+            jwt.verify(token,process.env.SECRET,(error,decoded)=>{
                 if(!error){
                     console.log(decoded)
                     req.user = decoded
