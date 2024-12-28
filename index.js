@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import productRouter from './routes/productrouter.js';
 
 dotenv.config() //load env library
 
@@ -41,7 +42,8 @@ app.use(
 )
 
 app.use("/api/users",userRouter)
-
+app.use("/api/products",productRouter)
+.u
 app.listen(
     5000,
     ()=>{
