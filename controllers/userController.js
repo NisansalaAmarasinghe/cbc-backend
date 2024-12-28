@@ -91,5 +91,29 @@ export function deleteUser(req,res){
     })
 }
 
+export function isAdmin(req){
+    if(req.user==null){
+        return false
+    }
+
+    if(req.user!="admin"){
+        return false
+    }
+
+    return true
+}
+
+export function isCustomer(req){
+    if(req.user==null){
+        return false
+    }
+
+    if(req.user!="customer"){
+        return false
+    }
+
+    return true
+}
+
 // "email":"sumudu98@example.com","password":"pass1234", admin
 //"email":"nisansala98@example.com","password":"pass7894", admin
