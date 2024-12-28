@@ -91,4 +91,5 @@ export function deleteUser(req,res){
     })
 }
 
-// "email":"sumudu98@example.com","password":"pass1234",
+// "email":"sumudu98@example.com","password":"pass1234", admin
+//"email":"nisansala98@example.com","password":"pass7894", admin
