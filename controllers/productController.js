@@ -19,10 +19,16 @@ product.save().then(()=>{
     })
 }).catch((error)=>{
     res.json({
-        message: "Product not created"
+        message: error
     })
 })
 
+}
+
+export function getProducts(req,res){
+    Product.find({}).then((products)=>{
+        res.json(products)
+    })
 }
 
 
