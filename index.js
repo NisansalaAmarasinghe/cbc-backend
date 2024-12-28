@@ -5,6 +5,7 @@ import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import productRouter from './routes/productrouter.js';
+import orderRouter from './routes/orderRouter.js';
 
 dotenv.config() //load env library
 
@@ -43,7 +44,8 @@ app.use(
 
 app.use("/api/users",userRouter)
 app.use("/api/products",productRouter)
-.u
+app.use("/api/orders",orderRouter)
+
 app.listen(
     5000,
     ()=>{
