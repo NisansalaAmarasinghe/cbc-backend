@@ -70,11 +70,11 @@ export function loggingUser(req,res){
                         message: "User logged in",
                         token: token,
                         user : {
-                            firstName : firstName,
-                            lastName : lastName,
-                            type : type,
-                            profilePicture : profilePicture,
-                            email : email
+                            firstName : user.firstName,
+                            lastName : user.lastName,
+                            type : user.type,
+                            profilePicture : user.profilePicture,
+                            email : user.email
                         }
                     })
                     
