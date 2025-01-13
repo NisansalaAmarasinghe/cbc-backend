@@ -47,7 +47,7 @@ export function loggingUser(req,res){
     User.find({email : req.body.email}).then(
         (users)=>{
             if(users.length == 0){
-                res.jsom({
+                res.json({
                     message: "User not found"
                 })
             }else{
@@ -68,12 +68,19 @@ export function loggingUser(req,res){
 
                     res.json({
                         message: "User logged in",
-                        token: token
+                        token: token,
+                        user : {
+                            firstName : firstName,
+                            lastName : lastName,
+                            type : type,
+                            profilePicture : profilePicture,
+                            email : email
+                        }
                     })
                     
                 }else{
                     res.json({
-                        message: "Try Again!!!"
+                        message: "User not logged in. (wrong password)"
                     })                          
                 }                                                
             }
@@ -95,8 +102,8 @@ export function isAdmin(req){
     if(req.user==null){
         return false
     }
-
-    if(req.user!="admin"){
+// methana prashne thibe oya user obj ekam admin kiyan type ekada check krna nisa fail wena eka
+    if(req.user.type!="admin"){
         return false
     }
 
@@ -108,12 +115,16 @@ export function isCustomer(req){
         return false
     }
 
-    if(req.user!="customer"){
+    if(req.user.type!="customer"){
         return false
     }
 
     return true
 }
 
-// "email":"sumudu98@example.com","password":"pass1234", admin
-//"email":"nisansala98@example.com","password":"pass7894", admin
+// Admin --> sumudu98@example.com - pass1234
+//           malee@example.com - pass3333
+
+//customer --> test98@example.com - pass5555
+
+//DB password --> admin:123

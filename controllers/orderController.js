@@ -59,27 +59,28 @@ export async function createOrder(req,res){
             }
 
             newProductArray[i]={
-                productId : product.productId,
+                Name : product.ProductName,
                 price : product.price,
                 quantity : newOrderData.orderedItems[i].quantity,
                 image : product.image[0]
             }
-
         }
 
         console.log(newProductArray)
 
+        newOrderData.orderedItems = newProductArray
 
-   //     newOrderData.orderId = orderId
-   //     newOrderData.email = req.user.email
 
-   //     const order = new Order(newOrderData)
+        newOrderData.orderId = orderId
+        newOrderData.email = req.user.email
 
-   //     await order.save()
+        const order = new Order(newOrderData)
 
-   //     res.json({
-   //         message: "Order created"
-   //     })
+        await order.save()
+
+        res.json({
+            message: "Order created"
+        })
 
     }catch(error){
 
@@ -96,7 +97,7 @@ export async function getOrders(req,res) {
 
         res.json(orders)
     }catch(error){
-        res.stats(500).jso({
+        res.stats(500).json({
             message: error.message
         })
     }   

@@ -6,12 +6,15 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import productRouter from './routes/productrouter.js';
 import orderRouter from './routes/orderRouter.js';
+import cors from "cors"
 
 dotenv.config() //load env library
 
 const app = express();
 
 const mongoUrl = process.env.MONGO_DB_URI
+
+app.use(cors())
 
 mongoose.connect(mongoUrl,{})
 
